@@ -1,0 +1,21 @@
+This is information from positionsasset_id : 610c11a8-4ab5-444d-bbe2-14efb7b5e203
+symbol : AAPL241011C00227500
+exchange : AssetExchange.EMPTY
+asset_class : AssetClass.US_OPTION
+asset_marginable : True
+avg_entry_price : 4.1
+qty : 1
+side : PositionSide.LONG
+market_value : 410
+cost_basis : 410
+unrealized_pl : 0
+unrealized_plpc : 0
+unrealized_intraday_pl : 0
+unrealized_intraday_plpc : 0
+current_price : 4.1
+lastday_price : 4.2
+change_today : -0.0238095238095238
+swap_rate : None
+avg_entry_swap_rate : None
+usd : None
+qty_available : 1

@@ -1,4 +1,5 @@
-This is information from positionsasset_id : 610c11a8-4ab5-444d-bbe2-14efb7b5e203
+This is information from positions
+asset_id : 610c11a8-4ab5-444d-bbe2-14efb7b5e203
 symbol : AAPL241011C00227500
 exchange : AssetExchange.EMPTY
 asset_class : AssetClass.US_OPTION

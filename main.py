@@ -1,6 +1,7 @@
 from config import *
 from utils import *
 from alpaca.trading.client import TradingClient
+from alpaca.trading.requests import ClosePositionRequest
 
 
 
@@ -26,24 +27,34 @@ Create a trailing stop loss
 Keep tracking current price and every X time steps refresh price and accordingly update Stop Loss Value
 
 
-
 """
 
-# if not positions:
-#     exit(0)
 
+#ASSUME: ISN"T VERY VOLATILE
+#INITIALIZING STOP LOSSES
 for index, position in enumerate(positions):
-    price = float(position.avg_entry_price)*100
+    price = float(position.current_price)*100
 
-    STOP_PRICE.append((price*(1-SOFT_CAP), price*(1-HARD_CAP)))
-
-
+    STOP_PRICE.append(price*(1-SOFT_CAP))
 
 
+#Recalculate stop losses
 
-while positions:
-    #GOES THROUUGH EVERY POSITION
+def stop_loss():
     for index, position in enumerate(positions):
+
+        current_price = float(position.current_price)*100
+        print("CURRENT PRICE: ", current_price)
+
+        print("STOP PRICE: ", STOP_PRICE[index])
+        if current_price <= STOP_PRICE[index]:
+            print("CLOSING POSITION")
+            trading_client.close_position(position.symbol, ClosePositionRequest(percentage='100'))
+            STOP_PRICE.pop(index)
+            positions.pop(index)
+
+        STOP_PRICE[index] = max((current_price) * (1-SOFT_CAP), STOP_PRICE[index])
+
 
 
 
